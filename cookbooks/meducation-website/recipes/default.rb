@@ -26,3 +26,17 @@ template "#{node[:unicorn][:config_path]}/#{common[:name]}.conf.rb" do
   source "unicorn.conf.erb"
   variables common
 end
+
+nginx_config_path = "/etc/nginx/sites-available/#{common[:name]}.conf"
+
+template nginx_config_path do
+  mode 0644
+  source "nginx.conf.erb"
+  variables common.merge(server_names: "meducation-website.test")
+  notifies :reload, "service[nginx]"
+end
+
+nginx_site common[:name] do
+  config_path nginx_config_path
+  action :enable
+end
