@@ -13,7 +13,7 @@ directory "#{common[:app_root]}/current" do
   owner "ec2-user"
 end
 
-%w(config log tmp socket pids).each do |dir|
+%w(log tmp socket pids).each do |dir|
   directory "#{common[:app_root]}/shared/#{dir}"
   recursive true
   mode 0775
