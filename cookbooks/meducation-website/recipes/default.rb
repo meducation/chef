@@ -10,7 +10,7 @@ directory common[:app_root] do
   owner "ec2-user"
 end
 
-directory "#{common[:app_root]}/current" do
+directory "#{common[:app_root]}/releases" do
   owner "ec2-user"
   group "ec2-user"
 end
