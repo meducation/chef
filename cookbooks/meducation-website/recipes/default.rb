@@ -12,11 +12,13 @@ end
 
 directory "#{common[:app_root]}/current" do
   owner "ec2-user"
+  group "ec2-user"
 end
 
 %w(log tmp socket pids).each do |dir|
   directory "#{common[:app_root]}/shared/#{dir}" do
     owner "ec2-user"
+    group "ec2-user"
     recursive true
     mode 0775
   end
