@@ -3,7 +3,7 @@ include_recipe "unicorn"
 
 gem_package "bundler"
 
-common = {name: "meducation-website", app_root: "u/apps/meducation/website"}
+common = {name: "meducation-website", app_root: "/srv/apps/meducation/website"}
 
 directory common[:app_root] do
   owner "ec2-user"
