@@ -16,6 +16,6 @@ end
 %w(log tmp socket pids).each do |dir|
   directory "#{common[:app_root]}/shared/#{dir}" do
     recursive true
+    mode 0775
   end
-  mode 0775
 end
