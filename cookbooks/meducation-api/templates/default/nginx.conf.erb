@@ -7,11 +7,13 @@ server {
     server_name <%= @server_name %> <%= @redirect_server_names %>;
     rewrite ^(.*) https://www.meducation.net$1 permanent;
 }
+<% unless @redirect_server_names.empty? %>
 server {
     listen 443;
     server_name <%= @redirect_server_names %>;
     rewrite ^(.*) https://www.meducation.net$1 permanent;
 }
+<% end %>
 
 server {
  
