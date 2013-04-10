@@ -18,7 +18,7 @@ server {
 
 server {
  
-  listen 443 ssl default;
+  listen 443 ssl;
   server_name <%= @server_name %>;
   root <%= @app_root %>/current/<%= @rails_directory %>/public;
   
