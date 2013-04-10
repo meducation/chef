@@ -6,19 +6,24 @@ end
 
 # Install from source
 #====================
+downloads_dir =  "/ec2-user/downloads/"
+directory downloads_dir do
+  user 'ec2-user'
+end
+
 {
   "sphinx" => "http://sphinxsearch.com/files/sphinx-2.0.7-release.tar.gz"
 }.each do |program, url|
   filename = url.split("/").last
   directory = filename.gsub(".tar.gz", "")
-  remote_file "/ec2-user/downloads/#{filename}.tar.gz" do
+  remote_file "#{downloads_dir}#{filename}.tar.gz" do
     source url
     notifies :run, "bash[install_#{program}]", :immediately
   end
 
   bash "install_#{program}" do
     user "root"
-    cwd "/tmp"
+    cwd downloads_dir
     code <<-EOH
       tar -zxf #{filename}
       (cd #{directory}/ && ./configure && make && make install)
