@@ -43,7 +43,7 @@ server {
     proxy_set_header X-Forwarded-Proto $scheme;
     proxy_set_header Host $host;
 
-    proxy_pass https://<%= @name %>;
+    proxy_pass http://<%= @name %>;
     proxy_redirect off;
   }
 
