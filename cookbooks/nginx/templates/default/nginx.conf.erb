@@ -2,11 +2,10 @@
 #   * Official English Documentation: http://nginx.org/en/docs/
 #   * Official Russian Documentation: http://nginx.org/ru/docs/
 
-user  nginx;
+user ec2-user;# nginx;
 worker_processes  <%= @node[:nginx][:worker_processes] %>;
 
 error_log  /var/log/nginx/error.log;
-
 pid        /var/run/nginx.pid;
 
 events {
@@ -14,9 +13,9 @@ events {
 }
 
 http {
-    include       /etc/nginx/mime.types;
+    include /etc/nginx/mime.types;
 
-    default_type  application/octet-stream;
+    default_type application/octet-stream;
 
     log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
                       '$status $body_bytes_sent "$http_referer" '
@@ -30,7 +29,15 @@ http {
     #keepalive_timeout  0;
     keepalive_timeout  65;
 
-    #gzip  on;
+    gzip on;
+    gzip_http_version 1.0;
+    gzip_proxied any;
+    gzip_min_length 500;
+    gzip_disable "MSIE [1-6]\.";
+    gzip_types text/plain text/html text/xml text/css
+               text/comma-separated-values
+               text/javascript application/x-javascript
+               application/atom+xml;
 
     # Load modular configuration files from the /etc/nginx/conf.d directory.
     # See http://nginx.org/en/docs/ngx_core_module.html#include
