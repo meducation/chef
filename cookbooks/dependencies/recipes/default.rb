@@ -6,7 +6,7 @@ end
 
 # Install from source
 #====================
-downloads_dir =  "/ec2-user/downloads/"
+downloads_dir =  "/home/ec2-user/downloads/"
 directory downloads_dir do
   user 'ec2-user'
 end
