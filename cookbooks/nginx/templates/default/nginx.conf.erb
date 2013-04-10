@@ -6,7 +6,6 @@ user ec2-user;
 worker_processes  <%= @node[:nginx][:worker_processes] %>;
 timer_resolution 500ms;
 worker_rlimit_nofile 10240;
-server_tokens off;
 
 error_log  /var/log/nginx/error.log;
 pid        /var/run/nginx.pid;
