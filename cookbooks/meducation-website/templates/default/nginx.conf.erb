@@ -5,7 +5,11 @@ upstream <%= @name %> {
 server {
     listen 80;
     server_name www.meducation.net meducation.net;
-
+    rewrite ^(.*) https://www.meducation.net$1 permanent;
+}
+server {
+    listen 443;
+    server_name www.meducation.net;
     rewrite ^(.*) https://www.meducation.net$1 permanent;
 }
 
