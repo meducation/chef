@@ -8,3 +8,10 @@ end
 template "/etc/nginx/nginx.conf" do
   notifies :reload, "service[nginx]"
 end
+
+directory "/etc/nginx/sites-available"
+directory "/etc/nginx/sites-enabled"
+directory "/srv/apps" do
+  user 'ec2-user'
+  group 'ec2-user'
+end
