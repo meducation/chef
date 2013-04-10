@@ -2,7 +2,7 @@
 #   * Official English Documentation: http://nginx.org/en/docs/
 #   * Official Russian Documentation: http://nginx.org/ru/docs/
 
-user ec2-user;# nginx;
+user ec2-user;
 worker_processes  <%= @node[:nginx][:worker_processes] %>;
 
 error_log  /var/log/nginx/error.log;
@@ -26,7 +26,6 @@ http {
     sendfile        on;
     #tcp_nopush     on;
 
-    #keepalive_timeout  0;
     keepalive_timeout  65;
 
     gzip on;

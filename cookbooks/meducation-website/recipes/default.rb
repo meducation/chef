@@ -15,7 +15,7 @@ directory "#{common[:app_root]}/releases" do
   group "ec2-user"
 end
 
-%w(log tmp sockets pids).each do |dir|
+%w(log tmp sockets pids cache attachments).each do |dir|
   directory "#{common[:app_root]}/shared/#{dir}" do
     owner "ec2-user"
     group "ec2-user"
