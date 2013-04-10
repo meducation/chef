@@ -15,7 +15,7 @@ directory "#{common[:app_root]}/releases" do
   group "ec2-user"
 end
 
-%w(log tmp socket pids).each do |dir|
+%w(log tmp sockets pids).each do |dir|
   directory "#{common[:app_root]}/shared/#{dir}" do
     owner "ec2-user"
     group "ec2-user"
@@ -35,7 +35,7 @@ nginx_config_path = "/etc/nginx/sites-available/#{common[:name]}.conf"
 template nginx_config_path do
   mode 0644
   source "nginx.conf.erb"
-  variables common.merge(server_names: "meducation-website.production")
+  variables common.merge(server_names: "www.meducation.net")
   notifies :reload, "service[nginx]"
 end
 
