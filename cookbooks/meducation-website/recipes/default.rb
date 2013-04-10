@@ -36,7 +36,7 @@ template nginx_config_path do
   mode 0644
   source "nginx.conf.erb"
   variables common.merge(
-    server_name: "www.meducation.net"
+    server_name: "www.meducation.net",
     redirect_server_names: "meducation.net"
   )
   notifies :reload, "service[nginx]"
