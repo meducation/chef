@@ -1,7 +1,7 @@
 app_root = "<%= @app_root %>"
 
 worker_processes 10
-working_directory "#{app_root}/current/#{@rails_directory}"
+working_directory "#{app_root}/current/#{rails_directory}"
 preload_app true
 timeout 300
 listen "#{app_root}/shared/sockets/unicorn.sock", :backlog => 2048
