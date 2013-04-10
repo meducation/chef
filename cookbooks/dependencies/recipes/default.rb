@@ -16,7 +16,7 @@ end
 }.each do |program, url|
   filename = url.split("/").last
   directory = filename.gsub(".tar.gz", "")
-  remote_file "#{downloads_dir}#{filename}.tar.gz" do
+  remote_file "#{downloads_dir}#{filename}" do
     source url
     notifies :run, "bash[install_#{program}]", :immediately
   end
