@@ -1,5 +1,6 @@
 include_recipe "nginx"
 include_recipe "unicorn"
+include_recipe "dependencies"
 
 gem_package "bundler"
 
