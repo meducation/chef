@@ -20,7 +20,7 @@ server {
  
   listen 443 ssl;
   server_name <%= @server_name %>;
-  root <%= @app_root %>/current/<%= @rails_directory %>/public;
+  root <%= @app_root %>/current/<%= @rails_root %>/public;
   
   client_max_body_size 4G;
 
@@ -62,11 +62,11 @@ server {
 
   error_page  500 502 503 504 /500.html;
   location = /500.html {
-    root  <%= @app_root %>/current/<%= @rails_directory %>/public;
+    root  <%= @app_root %>/current/<%= @rails_root %>/public;
   }
 
   error_page  404 /404.html;
   location = /400.html {
-    root  <%= @app_root %>/current/<%= @rails_directory %>/public;
+    root  <%= @app_root %>/current/<%= @rails_root %>/public;
   }
 }

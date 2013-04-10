@@ -3,7 +3,7 @@ include_recipe "unicorn"
 
 gem_package "bundler"
 
-common = {name: "meducation-api", app_root: "/srv/apps/meducation-api"}
+common = {name: "meducation-api", app_root: "/srv/apps/meducation-api", rails_root: "api"}
 
 directory common[:app_root] do
   recursive true
