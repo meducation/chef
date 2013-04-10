@@ -1,5 +1,5 @@
 upstream <%= @name %> {
-  server unix:<%= @app_root %>/shared/sockets/unicorn.sock fail_timeout=0;
+  server unix:<%= @app_root %>/shared/sockets/unicorn.sock; # fail_timeout=0;
 }
 
 server {
@@ -9,26 +9,29 @@ server {
   client_max_body_size 4G;
   server_name <%= @server_name %>;
 
-  root <%= @app_root %>/current/public;
+  #root <%= @app_root %>/current/public;
 
   access_log <%= @app_root %>/shared/log/access.log combined;
   error_log  <%= @app_root %>/shared/log/error.log;
   
   location / {
   
+    proxy_set_header HOST $host;
+    proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $http_x_forwarded_proto;
     proxy_set_header Host $http_host;
     proxy_redirect off;
     proxy_pass http://<%= @name %>;
 
     #if (-f $request_filename) {
-    #//   break;
-    #// }
+    #   break;
+    # }
 
-    #// if (!-f $request_filename) {
-    #//   proxy_pass http://<%= @server_name %>;
-    #//   break;
-    #// }
+    # if (!-f $request_filename) {
+    #   proxy_pass http://<%= @server_name %>;
+    #   break;
+    # }
    }
 
   error_page  500 502 503 504 /500.html;

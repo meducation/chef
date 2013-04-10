@@ -15,7 +15,6 @@ if GC.respond_to?(:copy_on_write_friendly=)
 end
 
 # handle zero-downtime restarts
-
 before_fork do |server, worker|
   old_pid = "#{server.config[:pid]}.oldbin"
   if old_pid != server.pid
@@ -28,7 +27,6 @@ before_fork do |server, worker|
 end
 
 after_fork do |server, worker|
-
   # set process title to application name and git revision
   revision_file = "#{Rails.root}/REVISION"
   if ENV['RAILS_ENV'] != 'development' && File.exists?(revision_file)
