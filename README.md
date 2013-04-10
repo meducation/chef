@@ -14,6 +14,10 @@ sudo git clone git://github.com/iHiD/meducation-chef.git "/var/chef"
 cd /var/chef && rvmsudo chef-solo -c solo.rb -j node.json 
 ```
 
+## Pre-reqs
+
+The instructions expect an EBS volume at /dev/sdm (~100GB)
+
 ## Still TODO
 
 * Auto-update yum?
@@ -27,6 +31,10 @@ At the moment running the follow does everything other than the SSL certs and st
 
 ```sh
 sudo yum update
+
+sudo mke2fs -F -j /dev/sdm 
+sudo mkdir /srv/apps
+sudo mount -t ext3 /dev/sdm /srv/apps
 
 export LANG=en_US.utf-8
 \curl -L https://get.rvm.io | bash -s stable --rails --autolibs=enabled
