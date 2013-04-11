@@ -46,6 +46,14 @@ server {
     proxy_pass http://<%= @name %>;
     proxy_redirect off;
   }
+ 
+  location ~ ^/assets/ {
+    expires 1y;
+    add_header Cache-Control public;
+   
+    add_header ETag "";
+    break;
+  }
 
   location = /favicon.ico {
       log_not_found off;
