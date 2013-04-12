@@ -37,7 +37,7 @@ server {
   server_name <%= @server_name %>;
   root <%= @app_root %>/current/<%= @rails_root %>/public;
   
-  client_max_body_size 4G;
+  client_max_body_size 4g;
 
   access_log <%= @app_root %>/shared/log/access.log combined;
   error_log  <%= @app_root %>/shared/log/error.log;
@@ -51,6 +51,8 @@ server {
   ssl_protocols  SSLv2 SSLv3 TLSv1;
   ssl_ciphers  HIGH:!aNULL:!MD5;
   ssl_prefer_server_ciphers   on;
+
+  proxy_max_temp_file_size 0
 
   location / {
   
