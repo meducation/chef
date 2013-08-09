@@ -26,6 +26,7 @@ The instructions expect an EBS volume at /dev/sdm (~100GB)
 * Make a couple of directories for ngnix config
 * Automate SSL cert transfer.
 * Automate 
+* scp config/database.yml ec2-user@46.51.173.134:/srv/apps/meducation-website/shared//config/database.yml
 
 At the moment running the follow does everything other than the SSL certs and starting Meducation. Do this BEFORE running Chef.
 
