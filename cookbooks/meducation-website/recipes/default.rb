@@ -1,6 +1,5 @@
 include_recipe "nginx"
 include_recipe "unicorn"
-include_recipe "dependencies"
 
 gem_package "bundler"
 
@@ -16,7 +15,20 @@ directory "#{common[:app_root]}/releases" do
   group "ec2-user"
 end
 
-%w(log tmp sockets pids cache attachments).each do |dir|
+directory "#{common[:app_root]}/shared" do
+  owner "ec2-user"
+  group "ec2-user"
+end
+
+{log: 'logs', files: 'files', cache: 'cache'}.each do |dir,mnt|
+  link "#{common[:app_root]}/shared/#{dir}" do
+    to "/mnt/#{mnt}"
+    owner "ec2-user"
+    group "ec2-user"
+  end
+end
+
+%w(tmp sockets pids attachments ).each do |dir|
   directory "#{common[:app_root]}/shared/#{dir}" do
     owner "ec2-user"
     group "ec2-user"
