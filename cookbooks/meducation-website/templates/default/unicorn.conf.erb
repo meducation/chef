@@ -34,7 +34,7 @@ after_fork do |server, worker|
     ENV["UNICORN_PROCTITLE"] = "<%= @name || "unicorn" %> " + File.read(revision_file)[0,6]
     $0 = ENV["UNICORN_PROCTITLE"]
   end
-  
+
   # reset sockets created before forking
   ActiveRecord::Base.establish_connection
 end
