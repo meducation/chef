@@ -3,7 +3,14 @@ include_recipe "unicorn"
 
 gem_package "bundler"
 
-common = {name: "meducation-website", app_root: "/srv/apps/meducation-website", rails_root: "website"}
+common = {name: "meducation-website", app_root: "/srv/apps/meducation-website"}
+
+directory "/var/lib/nginx/tmp/client_body" do
+  owner "ec2-user"
+  group "nginx"
+  recursive true
+  mode 0775
+end
 
 directory common[:app_root] do
   recursive true

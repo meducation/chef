@@ -14,10 +14,7 @@ server {
 
   listen 80;
   server_name <%= @server_name %>;
-  root <%= @app_root %>/current/<%= @rails_root %>/public;
-
-  proxy_read_timeout 5m;
-  proxy_send_timeout 5m;
+  root <%= @app_root %>/current/public;
 
   if ($http_x_forwarded_proto = http) {
     return 301 https://www.meducation.net$request_uri;
@@ -58,11 +55,11 @@ server {
 
   error_page  500 502 503 504 /500.html;
   location = /500.html {
-    root  <%= @app_root %>/current/<%= @rails_root %>/public;
+    root  <%= @app_root %>/current/public;
   }
 
   error_page  404 /404.html;
   location = /400.html {
-    root  <%= @app_root %>/current/<%= @rails_root %>/public;
+    root  <%= @app_root %>/current/public;
   }
 }
