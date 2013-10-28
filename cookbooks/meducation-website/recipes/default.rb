@@ -5,7 +5,12 @@ gem_package "bundler"
 
 common = {name: "meducation-website", app_root: "/srv/apps/meducation-website"}
 
-directory "/var/lib/nginx/tmp/client_body" do
+directory "/var/lib/nginx/" do
+  recursive true
+  mode 0775
+end
+
+directory "/var/lib/nginx/tmp/" do
   owner "ec2-user"
   group "nginx"
   recursive true
