@@ -71,3 +71,12 @@ nginx_site common[:name] do
   config_path nginx_config_path
   action :enable
 end
+
+bash "install_ruby_2" do
+  user "ec2_user"
+  cwd "/home/ec2_user"
+  code <<-EOH
+    rvm get stable
+    rvm install 2.0.0
+  EOH
+end
