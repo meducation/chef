@@ -78,5 +78,6 @@ bash "install_ruby_2" do
   code <<-EOH
     rvm get stable
     rvm install 2.0.0
+    rvm use 2.0.0 --default
   EOH
 end
