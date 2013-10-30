@@ -73,7 +73,7 @@ nginx_site common[:name] do
 end
 
 bash "install_ruby_2" do
-  user "ec2_user"
+  user "ec2-user"
   cwd "/home/ec2_user"
   code <<-EOH
     rvm get stable
