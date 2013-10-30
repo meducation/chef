@@ -74,7 +74,7 @@ end
 
 bash "install_ruby_2" do
   user "ec2-user"
-  cwd "/home/ec2_user"
+  cwd "/home/ec2-user"
   code <<-EOH
     rvm get stable
     rvm install 2.0.0
