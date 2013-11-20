@@ -17,6 +17,14 @@ server {
   root <%= @app_root %>/current/public;
 
   if ($http_x_forwarded_proto = http) {
+    set $bounce 'true';
+  }
+
+  if ($http_authorization ~ (^APIAuth.*$)) {
+    set $bounce 'false';
+  }
+
+  if ($bounce = 'true') {
     return 301 https://www.meducation.net$request_uri;
   }
 
