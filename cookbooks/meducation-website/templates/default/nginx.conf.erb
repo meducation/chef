@@ -11,6 +11,30 @@ server {
 <% end %>
 
 server {
+  listen 80;
+  server_name thefunkyprofessor.com;
+  return 301 https://www.meducation.net/funky_professor;
+}
+
+server {
+  listen 80;
+  server_name www.thefunkyprofessor.com;
+  return 301 https://www.meducation.net/funky_professor;
+}
+
+server {
+  listen 80;
+  server_name thefunkyprofessorlogin.com;
+  return 301 https://www.meducation.net/funky_professor;
+}
+
+server {
+  listen 80;
+  server_name www.thefunkyprofessorlogin.com;
+  return 301 https://www.meducation.net/funky_professor;
+}
+
+server {
 
   listen 80;
   server_name <%= @server_name %>;
