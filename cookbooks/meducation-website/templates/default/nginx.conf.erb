@@ -63,6 +63,34 @@ server {
   if ($bounce = 'true') {
     return 301 https://www.meducation.net$request_uri;
   }
+  
+  # BEGIN - IP Translation and blocking
+  set_real_ip_from 10.228.0.0/16;
+  real_ip_header X-Forwarded-For;
+  deny 222.186.25.105;
+  deny 60.169.77.2;
+  deny 222.184.24.147;
+  deny 61.160.232.193;
+  deny 61.160.212.57;
+  deny 222.184.24.147;
+  deny 61.160.232.193;
+  deny 61.160.232.193;
+  deny 61.160.232.193;
+  deny 61.160.212.57;
+  deny 96.46.5.138;
+  deny 91.207.6.174;
+  deny 91.207.7.21;
+  deny 91.207.4.254;
+  deny 91.207.5.157;
+  deny 91.207.4.9;
+  deny 58.55.127.228;
+  deny 91.207.7.162;
+  deny 91.207.7.141;
+  deny 91.207.7.149;
+  deny 91.207.7.77;
+  deny 126.114.190.124;
+
+  # END - IP Translation and blocking
 
   client_max_body_size 4g;
 
